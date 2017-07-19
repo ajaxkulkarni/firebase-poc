@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <style>
+        .hide {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body ng-app="fireBaseApp" ng-controller="loginCtrl">
+    <h1>Login here</h1>
+    <input type="email" id="userName" ng-model="userName" required>
+    <br>
+    <input type="password" id="userPassword" ng-model="userPassword" required>
+    <br>
+    <button id="loginButton" ng-click="login()"> Login</button>
+    <br>
+    <a href="register.html">Register</a>
+    <br>
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="app.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
