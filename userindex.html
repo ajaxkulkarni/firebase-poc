@@ -6,27 +6,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/userindex.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!--    Font Family     -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/userindex.css">
 
 </head>
 
 <body ng-app="fireBaseApp" ng-controller="userinfo">
 
-    <div class="container">
-        <button class="btn btn-danger" id="signOutButton">Sign out</button>
-    </div>
-    <div class="container">
-        <div class="register_form">
-          <!-- Displaying user email here -->
-           <p id="userProfileName"></p>
-           
-            <h2 class="form-heading">Submit your info</h2>
-           <ng-form name="form">
+    <div class="main-card mdl-card  mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text" >Submit Your Info</h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <ng-form name="form">
                 <div class="row">
                     <div class="col-md-4">
                         <label for="first_name">First Name</label>
@@ -35,8 +37,8 @@
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="first_name" ng-pattern="/^[a-zA-Z]*$/" ng-required="true" ng-model="user.first_name">
                     </div>
-                    
-                         <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.first_name.$invalid">Please enter a valid first name. Characters only without spaces </p>
+
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.first_name.$invalid">Please enter a valid first name. Characters only without spaces </p></div>
                 </div>
 
                 <div class="row">
@@ -44,9 +46,9 @@
                         <label for="middle_name">Middle Name</label>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" type="text" name="middle_name"  ng-pattern="/^[a-zA-Z]*$/" ng-required="true" ng-model="user.middle_name">
+                        <input class="form-control" type="text" name="middle_name" ng-pattern="/^[a-zA-Z]*$/" ng-required="true" ng-model="user.middle_name">
                     </div>
-                            <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.middle_name.$invalid">Please enter a valid middle name. Characters only without spaces </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.middle_name.$invalid">Please enter a valid middle name. Characters only without spaces </p></div>
                 </div>
 
                 <div class="row">
@@ -56,7 +58,7 @@
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="last_name" ng-pattern="/^[a-zA-Z]*$/" ng-required="true" ng-model="user.last_name">
                     </div>
-                    <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.last_name.$invalid">Please enter a valid middle name. Characters only without spaces </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.last_name.$invalid">Please enter a valid middle name. Characters only without spaces </p></div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -64,24 +66,24 @@
                     </div>
                     <div class="col-md-4">
                         <label class="radio-inline">
-                            <input type="radio" name="gender_optradio1" ng-model="user.gender_optradio" value="Male" ng-required="true">Male</label>
+                            <input type="radio" name="gender_optradio" ng-model="user.gender_optradio" value="Male" ng-required="true">Male</label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender_optradio2" ng-model="user.gender_optradio" value="Female" ng-required="true" >Female</label>
+                            <input type="radio" name="gender_optradio" ng-model="user.gender_optradio" value="Female" ng-required="true">Female</label>
                     </div>
-                    <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.gender_optradio.$invalid">Please select a valid gender. </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.gender_optradio.$invalid">Please select a valid gender. </p></div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4">
                         <label for="marital_optradio">Marital Status</label>
                     </div>
-             <div class="col-md-4">
-                <label class="radio-inline">
-                <input type="radio" name="marital_optradio" ng-model="user.marital_optradio" value="Married" ng-required="true" >Married</label>
-                <label class="radio-inline">
-                <input type="radio" name="marital_optradio" ng-model="user.marital_optradio"  value="Single" ng-required="true" >Single</label>
-            </div>
-        <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.marital_optradio.$invalid">Please select a valid Marital Status. </p>
+                    <div class="col-md-4">
+                        <label class="radio-inline">
+                            <input type="radio" name="marital_optradio" ng-model="user.marital_optradio" value="Married" ng-required="true">Married</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="marital_optradio" ng-model="user.marital_optradio" value="Single" ng-required="true">Single</label>
+                    </div>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.marital_optradio.$invalid">Please select a valid Marital Status. </p></div>
                 </div>
 
                 <div class="row">
@@ -91,7 +93,7 @@
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="pan_card" ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" maxlength="12" ng-required="true" ng-model="user.pan_card">
                     </div>
-                          <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.pan_card.$invalid">Please enter a valid PAN Card. </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.pan_card.$invalid">Please enter a valid PAN Card. </p></div>
                 </div>
 
 
@@ -100,9 +102,9 @@
                         <label for="uid">UID</label>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" type="number" ng-maxlength="12"  name="uid"  maxlength="12" ng-required="true" ng-model="user.uid">
+                        <input class="form-control" type="number" ng-maxlength="12" name="uid" maxlength="12" ng-required="true" ng-model="user.uid">
                     </div>
-                          <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.uid.$invalid">Please enter a valid UID. </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.uid.$invalid">Please enter a valid UID. </p></div>
                 </div>
 
                 <div class="row">
@@ -111,31 +113,31 @@
                     </div>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="dob" id="dob" ng-required="true" ng-model="user.dob">
-                         <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.dob.$invalid">Please enter a valid DOB. </p>
                     </div>
+                                            <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.dob.$invalid">Please enter a valid DOB. </p></div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <label for="profilePhoto">Profile photo</label>
                     </div>
                     <div class="col-md-4">
-<!--                        <progress value="0" max="100" id="profilePhotoUploaderProgress">0%</progress>-->
-                    <input class="form-control" type="file" name="profilePhoto" ngf-select   
-             accept="image/*" ngf-max-size="1MB"  ng-required="true" ng-model="user.profilePhoto">
+                        <!--                        <progress value="0" max="100" id="profilePhotoUploaderProgress">0%</progress>-->
+                        <input type="file" name="profilePhoto" ngf-select accept="image/*" ngf-max-size="1MB" ng-required="true" ng-model="user.profilePhoto">
                     </div>
-                    
-                 <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.profilePhoto.$invalid">Please upload file less than 1MB. </p>
+
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.profilePhoto.$invalid">Please upload file less than 1MB. </p></div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <label for="panCardPhoto">PAN card photo</label>
                     </div>
                     <div class="col-md-4">
-<!--                        <progress value="0" max="100" id="panCardPhotoUploaderProgress">0%</progress>-->
-                        <input class="form-control" type="file"  ngf-select   accept="image/*" ngf-max-size="1MB"  ng-required="true" name="panCardPhoto" ng-required="true" ng-model="user.panCardPhoto">
+                        <!--                        <progress value="0" max="100" id="panCardPhotoUploaderProgress">0%</progress>-->
+                        <input type="file" ngf-select accept="image/*" ngf-max-size="1MB" ng-required="true" name="panCardPhoto" ng-required="true" ng-model="user.panCardPhoto">
                     </div>
-                    
-                        <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.panCardPhoto.$invalid">Please upload file less than 1MB. </p>
+
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.panCardPhoto.$invalid">Please upload file less than 1MB. </p></div>
                 </div>
 
                 <div class="row">
@@ -151,7 +153,7 @@
                             <option value="other">other</option>
                         </select>
                     </div>
-                    <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.dropdownForResidence.$invalid">Please enter a valid Residence Type. </p>
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.dropdownForResidence.$invalid">Please enter a valid Residence Type. </p></div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -167,19 +169,25 @@
                             <option value="mother">mother</option>
                         </select>
                     </div>
-                    
-                    <p style="color:#e57373;font-weight:700;" ng-if="showErrors && form.dropdownForRelation.$invalid">Please enter a valid Relationship with co applicant.</p>
-                    
+
+                    <div class="col-md-4"><p class="error_text" ng-if="showErrors && form.dropdownForRelation.$invalid">Please enter a valid Relationship with co applicant.</p></div>
+
                 </div>
 
                 <div class="row">
-                    <button class="btn btn-primary" id="submitData" ng-click="submit(form)">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="submitData" ng-click="submit(form)">Submit</button>
                 </div>
 
             </ng-form>
 
         </div>
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="signOutButton">
+                Sign out
+            </button>
+        </div>
     </div>
+
 
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -191,12 +199,12 @@
     </script>
 
     <script src="js/custom_ang/app.js"></script>
-<!--    <script src="userindex.js"></script>-->
+    <!--    <script src="userindex.js"></script>-->
     <script src="js/custom_ang/userinfo.js"></script>
     <script src="js/file_upload/ng-file-upload-shim.js"></script>
     <script src="js/file_upload/ng-file-upload.js"></script>
-    
-    
+
+
 </body>
 
 </html>
