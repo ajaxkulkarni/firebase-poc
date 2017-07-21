@@ -26,24 +26,29 @@
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Register here</h2>
         </div>
-        <div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="email" id="userName" ng-model="userName" required>
-                <label class="mdl-textfield__label" for="userName">User Name</label>
-            </div>
-        </div>
-        <div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="password" id="userPassword" ng-model="userPassword" required>
-                <label class="mdl-textfield__label" for="userName">Password</label>
-            </div>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="singupButton" ng-click="signUp()">Sign up</button>
+        <ng-form name="registerForm">
             <div>
-                <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="login.html">Login</a>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="email" name="userName" id="userName" ng-model="userName" ng-required="true">
+                    <label class="mdl-textfield__label" for="userName">User Name</label>
+                </div>
             </div>
-        </div>
+            <p class="error_text" ng-if="showErrors && registerForm.userName.$invalid">Please enter a valid Email </p>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="password" id="userPassword" name="userPassword" ng-model="userPassword" ng-required="true">
+                    <label class="mdl-textfield__label" for="userName">Password</label>
+                </div>
+            </div>
+            <p class="error_text" ng-if="showErrors && registerForm.userPassword.$invalid">Please enter a valid password </p>
+            <p>{{registerError}}</p>
+            <div class="mdl-card__actions mdl-card--border">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="singupButton" ng-click="signUp(registerForm)">Sign up</button>
+                <div>
+                    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="login.html">Login</a>
+                </div>
+            </div>
+        </ng-form>
     </div>
     <!--
     <input type="email" id="userName" ng-model="userName" required><br>

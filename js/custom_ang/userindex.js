@@ -81,7 +81,7 @@ submitData.addEventListener('click', function () {
     profilePhotoDownloadURL = 'gs://web-quickstart-8445c.appspot.com/formImages/' + uidValue + '/' + profilePhotoImage.name;
     //Get the image URL for storing in DB
     panCardPhotoDownloadURL = 'gs://web-quickstart-8445c.appspot.com/formImages/' + uidValue + '/' + panCardPhotoImage.name;
-    
+
     var dropdownForResidenceValue = dropdownForResidence.value;
     var dropdownForRelationValue = dropdownForRelation.value;
     //Form submission date and time
@@ -92,7 +92,7 @@ submitData.addEventListener('click', function () {
 
 
 
-    
+
 
 
 
@@ -114,7 +114,7 @@ submitData.addEventListener('click', function () {
         formSubmissionDate: formSubmitDate,
         browserDetails: browserDetails
     });
-    
+
     //-----------------------------------------------------------------------------------------
     //Uploading files on firebase storage
     //Create a storage ref
@@ -156,61 +156,3 @@ var signOutButton = document.getElementById('signOutButton');
 signOutButton.addEventListener('click', function () {
     firebase.auth().signOut();
 });
-
-
-//    //Add a listener for profile photo file selection
-//    profilePhoto.addEventListener('change', function (e) {
-//        //Get file
-//        var profilePhotoImage = e.target.files[0];
-//        //Get the image URL for storing in DB
-//        profilePhotoDownloadURL = 'gs://web-quickstart-8445c.appspot.com/formImages/' + uidValue + '/' + profilePhotoImage.name;
-//        //Create a storage ref
-//        var storageRef = firebase.storage().ref('formImages/' + uidValue + '/' + profilePhotoImage.name);
-//
-//        //Upload file
-//        var task = storageRef.put(profilePhotoImage);
-//
-//        //Update progress bar
-//        task.on('state_changed',
-//            function progress(snapshot) {
-//                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//                profilePhotoUploaderProgress.value = percentage;
-//
-//            },
-//            function error(err) {
-//
-//            },
-//            function complete() {
-//
-//            }
-//        );
-//    });
-//
-//    //Add a listener for pan card photo file selection
-//    panCardPhoto.addEventListener('change', function (e) {
-//        //Get file
-//        var panCardPhotoImage = e.target.files[1];
-//        //Get the image URL for storing in DB
-//        panCardPhotoDownloadURL = 'gs://web-quickstart-8445c.appspot.com/formImages/' + uidValue + '/' + panCardPhotoImage.name;
-//        
-//        //Create a storage ref
-//        var storageRef = firebase.storage().ref('formImages/' + currentUserEmailID + '/' + panCardPhotoImage.name);
-//
-//        //Upload file
-//        var task = storageRef.put(panCardPhotoImage);
-//
-//        //Update progress bar
-//        task.on('state_changed',
-//            function progress(snapshot) {
-//                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//                panCardPhotoUploaderProgress.value = percentage;
-//
-//            },
-//            function error(err) {
-//
-//            },
-//            function complete() {
-//
-//            }
-//        );
-//    });

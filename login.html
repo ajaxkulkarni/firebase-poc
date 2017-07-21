@@ -14,7 +14,7 @@
     <!--    Font Family     -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
     <title>Login</title>
-    
+
     <link rel="stylesheet" href="css/login.css" />
 </head>
 
@@ -23,24 +23,29 @@
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Login here</h2>
         </div>
-        <div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="email" id="userName" ng-model="userName" required>
-                <label class="mdl-textfield__label" for="userName">User Name</label>
-            </div>
-        </div>
-        <div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="password" id="userPassword" ng-model="userPassword" required>
-                <label class="mdl-textfield__label" for="userName">Password</label>
-            </div>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="loginButton" ng-click="login()">Login</button>
+        <ng-form name="loginForm">
             <div>
-                <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="register.html">Register</a>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" name="email" type="email" id="userName" ng-model="userName" ng-required="true">
+                    <label class="mdl-textfield__label" for="userName">User Name</label>
+                </div>
             </div>
-        </div>
+            <p class="error_text" ng-if="showErrors && loginForm.email.$invalid">Please enter an email </p>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="password" name="password" id="userPassword" ng-model="userPassword" ng-required="true">
+                    <label class="mdl-textfield__label" for="userName">Password</label>
+                </div>
+            </div>
+            <p class="error_text" ng-if="showErrors && loginForm.password.$invalid">Please enter a password </p>
+            <p>{{loginError}}</p>
+            <div class="mdl-card__actions mdl-card--border">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="loginButton" ng-click="login(loginForm)">Login</button>
+                <div>
+                    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="register.html">Register</a>
+                </div>
+            </div>
+        </ng-form>
     </div>
 
     <!--    <input type="email" id="userName" ng-model="userName" required>-->
