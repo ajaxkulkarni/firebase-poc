@@ -57,3 +57,38 @@ app.controller("registerCtrl", function ($scope) {
     });
 
 });
+
+
+app.controller("usersCtrl", function ($scope) {
+
+    console.log("Users controller loaded ..");
+
+    $scope.users = [];
+    
+    $scope.loadUsers = function () {
+        var db = firebase.database().ref().child('userFormData').once('value').then(function (snapshot) {
+            var users = snapshot.val();
+            
+            //console.log("L:" + users.length);
+            for (key in users) {
+                //console.log(users[key]);
+                $scope.users.push(users[key]);              
+            }
+            console.log($scope.users);
+            $scope.$apply();
+        });
+    }
+
+    /*firebase.auth().onAuthStateChanged(function (firebaseUser) {
+        if (firebaseUser) {
+            window.location = 'userindex.html';
+            //       console.log(firebaseUser);
+            //       logoutButton.classList.remove('hide');
+        } else {
+            console.log('not logged in sorry');
+        }
+    });*/
+
+    $scope.loadUsers();
+
+});

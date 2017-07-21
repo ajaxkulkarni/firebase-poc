@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!--    Font Family     -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body ng-app="fireBaseApp" ng-controller="usersCtrl">
+   
+    <table border="1">
+        <tr>
+            <th>Sr. No</th>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Marrital status</th>
+            <th>PAN</th>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>{{$index + 1}}</td>
+            <td>{{user.EmailId}}</td>
+            <td>{{user.firstName}} {{user.middleName}} {{user.lastName}}</td>
+            <td>{{user.dateOfBirth}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.maritalStatus}}</td>
+            <td>{{user.panCard}}</td>
+        </tr>
+
+    </table>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="js/custom_ang/app.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/custom_ang/main.js"></script>
+</body>
+
+</html>
