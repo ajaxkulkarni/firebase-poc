@@ -1,6 +1,7 @@
 body {
     background-color: #fafafa;
     color: rgba(0, 0, 0, 0.8);
+    font-family: roboto, sans-serif;
 }
 .main-card {
     background-color: #fff;
