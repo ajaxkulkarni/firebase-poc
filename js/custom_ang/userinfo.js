@@ -18,7 +18,7 @@ app.controller("userinfo", function ($scope) {
 
 
     $scope.submit = function (form) {
-
+        var currentUserEmailID = firebase.auth().currentUser.email;
         if (!validate(form)) {
             return;
         }
@@ -31,8 +31,16 @@ app.controller("userinfo", function ($scope) {
         //Get the image URL for storing in DB
         panCardPhotoDownloadURL = 'gs://web-quickstart-8445c.appspot.com/formImages/' + $scope.user.uid + '/' + $scope.user.panCardPhoto.name;
 
+        //Form submission date and time
+        var formSubmitDate = Date().toString();
+
+        //Browser details
+        var browserDetails = "Browser: " + navigator.appCodeName + " , Version: " + navigator.userAgent;
+
+
         //push data in firebase userFormData 
         userFormDbRef.push().set({
+            EmailId: currentUserEmailID,
             firstName: $scope.user.first_name,
             middleName: $scope.user.middle_name,
             lastName: $scope.user.last_name,
@@ -45,7 +53,8 @@ app.controller("userinfo", function ($scope) {
             panCardPhotoDownloadURL: panCardPhotoDownloadURL,
             residence: $scope.user.dropdownForResidence,
             relationToApplicant: $scope.user.dropdownForRelation,
-
+            formSubmissionDate: formSubmitDate,
+            browserDetails: browserDetails
 
         });
 
@@ -76,8 +85,7 @@ app.controller("userinfo", function ($scope) {
 //Add a realtime listener for authentication
 firebase.auth().onAuthStateChanged(function (firebaseUser) {
     if (firebaseUser) {
-        currentUserEmailID = firebase.auth().currentUser.email;
-        userProfileName.innerText = "Hello " + currentUserEmailID;
+//                var currentUserEmailID = firebase.auth().currentUser.email;
         //        alert(currentUserEmailID);
         //window.location = 'userindex.html';
         //       console.log(firebaseUser);
