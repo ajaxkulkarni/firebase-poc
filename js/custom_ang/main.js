@@ -58,8 +58,9 @@ app.controller("registerCtrl", function ($scope) {
 
 });
 
+var myApp = angular.module("fireBaseApp", ['ngSanitize', 'ngCsv']);
 
-app.controller("usersCtrl", function ($scope) {
+myApp.controller("usersCtrl", function ($scope) {
 
     console.log("Users controller loaded ..");
 
