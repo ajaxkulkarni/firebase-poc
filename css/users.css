@@ -1,0 +1,10 @@
+body {
+    background-color: #fafafa;
+    font-family: roboto, sans-serif;
+}
+.main-card {
+    background-color: #fff;
+    margin: 32px auto;
+    width: 95%;
+    overflow-x: auto;
+}
